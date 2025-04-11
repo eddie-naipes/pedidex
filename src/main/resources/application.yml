@@ -1,3 +1,21 @@
 spring:
   application:
     name: pedidex
+
+  datasource:
+    url: jdbc:postgresql://${PEDIDEX_HOST:localhost}:${PEDIDEX_PORT:5432}/${PEDIDEX_DB:pedidex}
+    username: ${PEDIDEX_USER:pedidexadmin}
+    password: ${PEDIDEX_PASS:pedidexadmin}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
