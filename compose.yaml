@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=pedidex'
+      - 'POSTGRES_PASSWORD=pedidexadmin'
+      - 'POSTGRES_USER=pedidexadmin'
+    ports:
+      - '5432'
