@@ -29,24 +29,16 @@ public class Client {
     @UuidGenerator
     private UUID id;
 
-    @NotBlank(message = "First name is mandatory")
-    @Size(min = 1, max = 255)
     private String firstName;
 
-    @NotBlank(message = "Last name is mandatory")
-    @Size(min = 1, max = 255, message = "Last name should be between 1 and 255 characters")
     private String lastName;
 
-    @NotBlank
-    @Email(message = "Email should be valid")
     private String email;
 
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = CLIENT_ID)
     private List<Phone> phone;
 
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = CLIENT_ID)
     private List<Address> addresses;

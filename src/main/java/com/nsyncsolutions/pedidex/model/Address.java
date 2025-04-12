@@ -2,8 +2,6 @@ package com.nsyncsolutions.pedidex.model;
 
 import com.nsyncsolutions.pedidex.model.enums.StatusType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,14 +23,8 @@ public class Address {
     @Id
     @UuidGenerator
     private UUID id;
-    @NotBlank
-    @Size(max = 150)
     private String street;
-    @NotBlank
-    @Size(max = 150)
     private String city;
-    @NotBlank
-    @Size(max = 150)
     private String addressNotes;
 
     @Enumerated(EnumType.STRING)
