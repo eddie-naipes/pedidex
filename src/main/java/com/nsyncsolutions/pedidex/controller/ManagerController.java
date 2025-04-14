@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static com.nsyncsolutions.pedidex.utils.ApiConstants.API_VERSION;
-import static com.nsyncsolutions.pedidex.utils.ApiConstants.MANAGER;
-
 @RestController
-@RequestMapping(API_VERSION + MANAGER)
+@RequestMapping("api/v1/managers")
 @AllArgsConstructor
 public class ManagerController {
 
@@ -22,8 +19,8 @@ public class ManagerController {
 
     @PostMapping
     public ResponseEntity<ManagerDTO> create(@RequestBody @Valid ManagerDTO managerDTO) {
-        managerService.create(managerDTO);
-        return ResponseEntity.ok(managerDTO);
+        ManagerDTO managerCreated = managerService.create(managerDTO);
+        return ResponseEntity.ok(managerCreated);
     }
 
     @GetMapping

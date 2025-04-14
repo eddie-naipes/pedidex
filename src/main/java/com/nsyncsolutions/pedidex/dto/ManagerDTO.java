@@ -22,8 +22,6 @@ public class ManagerDTO {
     @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
     private String lastName;
 
-    @NotBlank(message = "Username is mandatory")
-    @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
     private String username;
 
     @NotBlank(message = "Password is mandatory")

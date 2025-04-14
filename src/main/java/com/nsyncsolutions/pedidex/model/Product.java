@@ -3,29 +3,27 @@ package com.nsyncsolutions.pedidex.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
-import static com.nsyncsolutions.pedidex.utils.TableConstants.PX_MANAGER;
-
 @Entity
-@Table(name = PX_MANAGER)
+@Table(name = "px_product")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
-public class Manager {
+public class Product {
 
     @Id
     @UuidGenerator
     private UUID id;
-
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private String email;
+    private String name;
+    private String description;
+    private BigDecimal price;
 }

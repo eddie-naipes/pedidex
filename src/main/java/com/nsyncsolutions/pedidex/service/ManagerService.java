@@ -2,6 +2,7 @@ package com.nsyncsolutions.pedidex.service;
 
 import com.nsyncsolutions.pedidex.dto.ManagerDTO;
 import com.nsyncsolutions.pedidex.mapper.ManagerMapper;
+import com.nsyncsolutions.pedidex.model.Manager;
 import com.nsyncsolutions.pedidex.repository.ManagerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,12 @@ public class ManagerService {
 
 
     public ManagerDTO create(ManagerDTO managerDto) {
-        return managerMapper.managerToManagerDTO(managerRepository.save(managerMapper.managerDTOToManager(managerDto)));
+
+        Manager manager = managerMapper.managerDTOToManager(managerDto);
+        manager.setUsername(generateUserName(managerDto.getFirstName(), managerDto.getLastName()));
+        System.out.println("Manager username: " + manager.getUsername());
+        System.out.println("Manager: " + manager.toString());
+        return managerMapper.managerToManagerDTO(managerRepository.save(manager));
     }
 
     public List<ManagerDTO> findAll() {
@@ -36,6 +42,7 @@ public class ManagerService {
 
     public ManagerDTO update(ManagerDTO managerDto) {
         if (managerRepository.findById(managerDto.getId()).isPresent()) {
+            managerDto.setUsername(generateUserName(managerDto.getFirstName(), managerDto.getLastName()));
             return managerMapper.managerToManagerDTO(managerRepository.save(managerMapper.managerDTOToManager(managerDto)));
         } else {
             return null;
@@ -46,6 +53,13 @@ public class ManagerService {
         if (managerRepository.findById(id).isPresent()) {
             managerRepository.deleteById(id);
         }
+    }
+
+
+    private String generateUserName(String firstName, String lastName) {
+        String firstPart = firstName.substring(0, 1).toLowerCase();
+        String lastPart = lastName.toLowerCase();
+        return firstPart.concat(".").concat(lastPart);
     }
 
 }

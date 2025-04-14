@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static com.nsyncsolutions.pedidex.utils.ApiConstants.API_VERSION;
-import static com.nsyncsolutions.pedidex.utils.ApiConstants.CLIENT;
 
 @RestController
-@RequestMapping(API_VERSION + CLIENT)
+@RequestMapping("api/v1/clients")
 @AllArgsConstructor
 public class ClientController {
 
