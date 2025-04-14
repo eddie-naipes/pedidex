@@ -1,9 +1,6 @@
 package com.nsyncsolutions.pedidex.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +21,7 @@ public class OrderedItem {
     @UuidGenerator
     private UUID id;
 
-    @OneToOne
+    @ManyToOne
     private Product product;
 
     private Integer quantity;
